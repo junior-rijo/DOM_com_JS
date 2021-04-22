@@ -1,3 +1,4 @@
+function initTabnav(){
 const tabMenu = document.querySelectorAll('.js-tabmenu li');
 const tabContent = document.querySelectorAll('.js-tabcontent section');
 
@@ -18,3 +19,25 @@ if(tabMenu.length && tabContent.length){
         })
     })
 };
+}
+initTabnav();//sempre isolar os códigos com função
+
+function initAccordion() {
+
+    const accordionList = document.querySelectorAll('.js-accordion dt');
+    const activeClass = 'ativo';
+    if (accordionList.length) {
+        accordionList[0].classList.add(activeClass);
+        accordionList[0].nextElementSibling.classList.add(activeClass);
+        //adcionando a classe ativo em cada elemento (2)
+        function activeAccordion() {
+            this.classList.toggle(activeClass)
+            this.nextElementSibling.classList.toggle(activeClass)
+        }
+        //selecionando os dts (1)
+        accordionList.forEach((item) => {
+            item.addEventListener('click', activeAccordion)
+        })
+    }
+}
+initAccordion();
