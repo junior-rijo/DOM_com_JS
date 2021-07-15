@@ -1,5 +1,5 @@
 //For Each
-const imgs = document.querySelectorAll('img')
+//const imgs = document.querySelectorAll('img')
 //a cada imagem a funcão abaixo é executada
 /*let i = 0
 imgs.forEach(function(){
@@ -108,7 +108,7 @@ if(small.matches) {
 */
 // Verifique a distância da primeira imagem
 // em relação ao topo da página
-const img = document.querySelector('img')
+/*const img = document.querySelector('img')
 
 const imgTop = img.offsetTop
 
@@ -135,7 +135,7 @@ window.onload = function(){//serve para carregar o js após o carregamento da fu
 
 
 
-/* Eventos 1 e 2 */
+/* Eventos 1 e 2 
 const img = document.querySelector('img');
 
 // elemento.addEventListener(event, callback, options)
@@ -253,13 +253,13 @@ function imgSrc(event) {
 imgs.forEach((img) => {
   img.addEventListener('click', imgSrc);
 });
-
+*/
 //EXERCÍCIO
 // Quando o usuário clicar nos links internos do site,
 // adicione a classe ativo ao item clicado e remova dos
 // demais itens caso eles possuam a mesma. Previna
 // o comportamento padrão desses links
-const linksInternos = document.querySelectorAll('a[href^=#]')
+/*const linksInternos = document.querySelectorAll('a[href^=#]')
 
 function handleLink(event) {
     event.preventDefault();
@@ -273,19 +273,19 @@ function handleLink(event) {
 linksInternos.forEach((link) =>{
     linksInternos.addEventListener('click', handleLink)
 })
-
+*/
 // Selecione todos os elementos do site começando a partir do body,
 // ao clique mostre exatamente quais elementos estão sendo clicados
 
-const todosElementos = do.querySelectorAll('body *')
+//const todosElementos = do.querySelectorAll('body *')
 
-function handleElemento(event){
-    console.log(event.currentTarget);
-}
+//function handleElemento(event){
+//console.log(event.currentTarget);
+//}
 
-todosElementos.forEach((elemento) =>{
+/*todosElementos.forEach((elemento) =>{
     elemento.addEventListener('click', handleElemento);
-})
+})*/
 
 // Utilizando o código anterior, ao invés de mostrar no console,
 // remova o elemento que está sendo clicado, o método remove() remove um elemento
@@ -308,7 +308,7 @@ lista.children[--lista.children.length]; // último filho
 
 lista.querySelectorAll('li'); // todas as LI's
 lista.querySelector('li:last-child'); // último filho
-*/
+
 //Manipulando ELementos
 const lista = document.querySelector('.animais-lista');
 const contato = document.querySelector('.contato');
@@ -326,3 +326,123 @@ novoH1.innerText = 'Novo Título';//adcionando texto
 novoH1.classList.add('titulo');//adcionou uma classe
 
 animais.appendChild(novoH1);//inserido na visualização.
+
+Clonar Elementos
+
+Todo elemento selecionado é único. Para criarmos um novo elemento baseado no anterior, é necessário utilizar o método cloneNode()
+
+const titulo = document.querySelector('h1');
+const titulo2 = document.querySelector('h1');
+const novoTitulo = titulo;
+titulo, titulo2 e novoTitulo são iguais
+
+const cloneTitulo = titulo.cloneNode(true);
+const contato = document.querySelector('.contato');
+contato.appendChild(cloneTitulo);
+*/
+//Exercicio
+// Duplique o menu e adicione ele em copy
+const menu = document.querySelector('.menu')
+const copy = document.querySelector('.copy')
+
+const cloneMenu = menu.cloneNode(true)//clonando o menu
+copy.appendChild(cloneMenu)//movendo o menu para baico
+// Selecione o primeiro DT da dl de Faq
+const faq = document.querySelector('.faq')
+const primeiroDt = faq.querySelector('dt')
+// Selecione o DD referente ao primeiro DT
+const procimoDD = primeiroDt.nextElementSibling;
+
+// Substitua o conteúdo html de .faq pelo de .animais
+const animais = document.querySelector('.animais')
+
+faq.innerHTML = animais.innerHTML;
+
+/* Objetos*/
+
+//Função Construtora de Objetos
+function Carro(marcaAtribuida, precoAtribuido) {
+  this.marca = marcaAtribuida
+  this.preco = precoAtribuido
+}
+
+//Atribuindo valores para o objeto.
+const honda = new type('Honda', 3000);
+const fiat = new type('Fiat', 2500);
+
+//this para retornar o objeto 
+function Carro2(marcaAtribuida, precoAtribuido) {
+  this.marca = marcaAtribuida
+  this.preco = precoAtribuido
+}
+// Utilizando o foreach na array abaixo,
+// some os valores de Taxa e os valores de Recebimento
+
+const transacoes = [
+  {
+    descricao: 'Taxa do Pão',
+    valor: 'R$ 39',
+  },
+  {
+    descricao: 'Taxa do Mercado',
+    valor: 'R$ 129',
+  },
+  {
+    descricao: 'Recebimento de Cliente',
+    valor: 'R$ 99',
+  },
+  {
+    descricao: 'Taxa do Banco',
+    valor: 'R$ 129',
+  },
+  {
+    descricao: 'Recebimento de Cliente',
+    valor: 'R$ 49',
+  },
+];
+
+let taxaTotal = 0;
+transacoes.forEach((item) => {
+  const numeroLimpo = +item.valor.replace('R$', '')// o sinal de '+' transforma a string em número e o replace esta retirando o cifrão para efetuar a somna no final da função
+  if (item.descricao.slice(0, 4) === 'Taxa')
+    taxaTotal += item.valor//retornando a soma da função
+})
+console.log(taxaTotal)
+
+// Retorne uma array com a lista abaixo
+const transportes = 'Carro;Avião;Trem;Ônibus;Bicicleta';
+
+const arrayTransportes = transportes.split(';')
+
+console.log(arrayTransportes)
+
+// Substitua todos os span's por a's
+let html = `<ul>
+                <li><span>Sobre</span></li>
+                <li><span>Produtos</span></li>
+                <li><span>Contato</span></li>
+              </ul>`;
+html = html.split('span').join('a')//pego o span e transforme em a
+console.log(html)
+
+// Retorne o último caracter da frase
+const frase = 'Melhor do ano!';
+
+console.log(frase[frase.length - 1])
+
+// Retorne o total de taxas
+const transacoes = ['Taxa do Banco', '   TAXA DO PÃO', '  taxa do mercado', 'depósito Bancário', 'TARIFA especial'];
+
+let taxasTotal = 0;
+transacoes.forEach((item) => {
+  item = item.toLowerCase();
+  item = item.trim();
+  item = item.slice(0, 4);
+
+  if (item === 'taxa') {
+    taxasTotal++
+  }
+
+})
+
+console.log(taxasTotal)
